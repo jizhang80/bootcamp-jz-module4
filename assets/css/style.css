@@ -9,6 +9,7 @@
     --btn-color: #351C75;
     --btn-hover-color: #BD60E7;
     --score-list-background-color: #D9D4EA;
+    --bottom-color: #C7C7C7;
     --main-font-family: "Gill Sans Extrabold", sans-serif;
 }
 
@@ -63,9 +64,9 @@ body {
     margin: 20px;
 }
 
-#viewscore-btn {
-    
-}
+/* #viewscore-btn {
+
+} */
 
 #viewscore-link {
     text-decoration: none;
@@ -104,6 +105,10 @@ body {
     display: none;
 }
 
+#scores-page {
+    display: none;
+}
+
 #scores-list {
     background-color: var(--score-list-background-color);
 }
@@ -112,3 +117,16 @@ body {
     padding: 5px;
 }
 
+#bottom {
+    display: none;
+    width: 500px;
+    margin:auto;
+    margin-top: 40px;
+    border-top: solid var(--bottom-color) 2px;
+}
+
+#result {
+    color: var(--bottom-color);
+    font-style: italic;
+    font-weight: lighter;
+}
