@@ -1,0 +1,58 @@
+[
+    {
+        "index": 1,
+        "question": "Inside which HTML element do we put the JavaScript?",
+        "choices": [
+            "1. <js>", 
+            "2. <scripting>", 
+            "3. <javascript>", 
+            "4. <script>"
+        ],
+        "answer": "4"
+    },
+
+    {
+        "index": 2,
+        "question": "What is the correct syntax for referring to an external script called 'xxx.js'?",
+        "choices": [
+            "1. <script href='xxx.js'>", 
+            "2. <script src='xxx.js'>", 
+            "3. <script name='xxx.js'>", 
+            "4. <link src='xxx.js'>"
+        ],
+        "answer": "2"
+    },
+
+    {
+        "index": 3,
+        "question": "The external JavaScript file must contain the <script> tag.",
+        "choices": [
+            "1. True", 
+            "2. False"
+        ],
+        "answer": "2"
+    },
+
+    {
+        "index": 4,
+        "question": "How do you write 'Hello World' in an alert box?",
+        "choices": [
+            "1. alert('Hello World');", 
+            "2. alertBox('Hello World');",
+            "3. msgBox('Hello World');", 
+            "4. msg('Hello World');"
+        ],
+        "answer": "1"
+    },
+
+    {
+        "index": 5,
+        "question": "How do you create a function in JavaScript?",
+        "choices": [
+            "1. function:myFunction()", 
+            "2. function = myFunction()",
+            "3. function myFunction()"
+        ],
+        "answer": "3"
+    }
+]

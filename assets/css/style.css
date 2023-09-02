@@ -24,7 +24,7 @@
 }
 
 .question-choices {
-    width: 200px;
+    width: 250px;
     text-align: left;
 }
 
@@ -58,7 +58,8 @@ body {
 }
 
 #top {
-    display: flex;
+    /* display: flex; */
+    display: none;
     flex-direction: row;
     justify-content: space-between;
     margin: 20px;
@@ -74,7 +75,7 @@ body {
 }
 
 #time-zone {
-    width: 100px;
+    width: 65px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -95,7 +96,7 @@ body {
     display: none;
 }
 
-#choicesDiv {
+#choices-zone {
     display: flex;
     flex-direction: column;
     justify-content:flex-start;
