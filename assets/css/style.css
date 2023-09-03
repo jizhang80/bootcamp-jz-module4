@@ -43,15 +43,15 @@ p, h3 {
 
 body {
     max-width: 1900px;
-    min-width: 600px;
-    height: 800px;
+    min-width: 350px;
+    /* height: 800px; */
     font-family: var(--main-font-family);
 }
 
 #mainbox {
     border: solid 2px black;
     border-radius: 10px;
-    width: 800px;
+    max-width: 800px;
     height: 600px;
     margin: auto;
     margin-top: 100px;
@@ -65,9 +65,6 @@ body {
     margin: 20px;
 }
 
-/* #viewscore-btn {
-
-} */
 
 #viewscore-link {
     text-decoration: none;
@@ -82,7 +79,7 @@ body {
 }
 
 #center {
-    width: 500px;
+    max-width: 500px;
     margin:auto;
     margin-top: 150px;
 }
@@ -120,7 +117,7 @@ body {
 
 #bottom {
     display: none;
-    width: 500px;
+    max-width: 500px;
     margin:auto;
     margin-top: 40px;
     border-top: solid var(--bottom-color) 2px;
@@ -130,4 +127,11 @@ body {
     color: var(--bottom-color);
     font-style: italic;
     font-weight: lighter;
+}
+
+@media (max-width: 800px){
+    #mainbox {
+        margin-top: 5px;
+        padding: auto;
+    }
 }

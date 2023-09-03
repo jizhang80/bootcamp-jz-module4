@@ -16,7 +16,7 @@ quiz object structure, store all the quiz
 */
 
 // constant variable define
-const TIMETOTAL = 100; // total time
+const TIMETOTAL = 50; // total time
 const SCORE = 20;  // win score per quiz
 const PUNISH = 10; // punish time seconds if wrong
 const STORAGEKEY = "quizScoresList"; //localstorage key
@@ -81,7 +81,8 @@ quiz.setScoresList = function(newScoresObj) {
 
 quiz.getScoresList = function() {
     // return scores object list, if no such key, return null
-    return JSON.parse(localStorage.getItem(STORAGEKEY));
+    const storeList = JSON.parse(localStorage.getItem(STORAGEKEY));
+    return ((storeList === null)? [] : storeList)
 }
 
 quiz.clearScoresList = function() {
@@ -131,6 +132,7 @@ quiz.setTimer = function() {
         if (this.time < 0) {
             this.clearTimer();
             showDonePage();
+            timerSpan.textContent = "0";
         }
     }, 1000);
 }
@@ -159,7 +161,7 @@ function showFirstPage() {
     scoresPage.style.display = 'none';
     // bind start quiz btn with handler
     startQuizBtn.addEventListener('click', handleStartQuiz);
-    // init timer
+    // setup timer
     timerSpan.textContent = quiz.time;
 }
 
@@ -186,7 +188,7 @@ function showDonePage() {
     scoresPage.style.display = 'none';
     // show final score
     finalScore.textContent = quiz.currentScore;
-    initName.textContent = '';
+    initName.value = '';
     // bind handler to submit btn
     const submitBtn = document.querySelector('#submit-score-list');
     submitBtn.addEventListener('click', handlesubmitInitials);
@@ -200,7 +202,7 @@ function showScoresPage() {
     donePage.style.display = "none";
     firstPage.style.display = 'none';
     quizPage.style.display = "none";
-    showScoresList();
+    buildScoresList();
     // bind handler to go back btn
     const goBackBtn = document.querySelector('#go-back');
     goBackBtn.addEventListener('click', handleGoBack);
@@ -209,7 +211,7 @@ function showScoresPage() {
     clearHighScoreBtn.addEventListener('click', handleClearHighScores);
 }
 
-function showScoresList() {
+function buildScoresList() {
     // display list on page
     const scoresListEl = document.querySelector('#scores-list');
     scoresListEl.textContent = ''
@@ -291,10 +293,15 @@ function handleClearHighScores() {
 }
 
 function handleViewHighScores() {
-    if (confirm("Are you sure leave current page?")) {
-        quiz.clearTimer();
-        showScoresPage();
-    }  
+    if (quiz.timerId !== 0) {
+        // quiz.timerId !== 0 means quiz ongoing
+        if (confirm("Are you sure leave current page?")) {
+            quiz.clearTimer();
+        } else {
+            return; // answer cancel, do nothing
+        }
+    }
+    showScoresPage();
 }
 
 
@@ -303,6 +310,8 @@ function init() {
     // application start
     // show first page
     showFirstPage();
+    // load data
+    quiz.scores = quiz.getScoresList();
 }
 
 init();
