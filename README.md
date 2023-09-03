@@ -2,19 +2,33 @@
 
 ## live URL application deployed
 
-TODO  
+[live URL application deployed](https://jizhang80.github.io/bootcamp-jz-module4/)
 
 ## function discription
 
-TODO  
+1. finish challenge by a single page.
+2. there are 5 quiz stored in the quiz.json, could add more by adding the data as the structure.
+3. total quiz time is 60 seconds, if one quiz wrong, punish 10 seconds.
+4. after done, if the same player have more than 1 score record, both will be displayed.
+5. could fit small page size.
 
 ## screenshot
 
-TODO  
+### first page
+![First Page](./assets/image/firstPage.jpg)
 
-# 04 Web APIs: Code Quiz
+### quiz page
+![Quiz Page](./assets/image/quizPage.jpg)
 
-## Your Task
+### done page
+![Done Page](./assets/image/donePage.jpg)
+
+### view scores page
+![View Scores Page](./assets/image/viewScores.jpg)
+
+## Task description - 04 Web APIs: Code Quiz
+
+### Your Task
 
 At some point in your journey to become a full-stack web developer, you’ll likely be asked to complete a coding assessment&mdash;perhaps as part of an interview process. A typical coding assessment includes both multiple-choice questions and interactive coding challenges. 
 
@@ -22,7 +36,7 @@ To help familiarize you with these tests and allow you to use the skills covered
 
 This week’s coursework will equip you with all the skills you need to succeed in this assignment.
 
-## User Story
+### User Story
 
 ```
 AS A coding boot camp student
@@ -30,7 +44,7 @@ I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
 SO THAT I can gauge my progress compared to my peers
 ```
 
-## Acceptance Criteria
+### Acceptance Criteria
 
 ```
 GIVEN I am taking a code quiz
@@ -51,7 +65,7 @@ WHEN the game is over
 THEN I can save my initials and my score
 ```
 
-## Grading Requirements
+### Grading Requirements
 
 > **Note**: If a Challenge assignment submission is marked as “0”, it is considered incomplete and will not count towards your graduation requirements. Examples of incomplete submissions include the following:
 >
@@ -99,7 +113,7 @@ This Challenge is graded based on the following criteria:
 
 * Repository contains quality readme file with description, screenshot, and link to deployed application.
 
-## Review
+### Review
 
 You are required to submit BOTH of the following for review:
 

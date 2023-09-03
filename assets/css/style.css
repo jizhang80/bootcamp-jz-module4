@@ -108,6 +108,8 @@ body {
 }
 
 #scores-list {
+    overflow-y:scroll;
+    max-height: 200px;
     background-color: var(--score-list-background-color);
 }
 
