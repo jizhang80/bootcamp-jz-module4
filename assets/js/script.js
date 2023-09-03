@@ -58,23 +58,38 @@ quiz.reset = function() {
     // do not reset scores list here
 }
 
+// do not update, only insert new data
+// quiz.updateScoresList = function(newScoresObj) {
+//     //check if there is a same name player, if yes, update the score, return true
+//     // if quiz.scores.length === 0 or didn't found same name, return false
+//     if (quiz.scores.length > 0) {
+//         for (let i = 0; i < quiz.scores.length; i++) {
+//             if (newScoresObj.initial === quiz.scores[i].initial) {
+//                 quiz.scores[i].score = newScoresObj.score;
+//                 return true;
+//             }
+//         }
+//     }
+//     return false;
+// }
 
-quiz.setScoresList = function(newScoresObj) {
+quiz.insertScoresList = function(newScoresObj) {
     // insert newScoresObj into quiz.scores arr to have a descending order or score
-    let done = false;
     if (quiz.scores.length > 0) {
         for (let i = 0; i < quiz.scores.length; i++) {
             if (newScoresObj.score > quiz.scores[i].score) {
                 quiz.scores.splice(i, 0, newScoresObj);
-                done = true;
-                break;
+                return;
             }
         }
-    }
+    } 
+    quiz.scores.push(newScoresObj);
+}
 
-    if (!done) { // if quiz.scores.length === 0 or all the items.score in quiz.scores >= newScoresObj.score
-        quiz.scores.push(newScoresObj);
-    }
+
+quiz.setScoresList = function(newScoresObj) {
+    // insert data
+    this.insertScoresList(newScoresObj)
     // save to localstorage
     localStorage.setItem(STORAGEKEY, JSON.stringify(quiz.scores));
 }
@@ -87,6 +102,7 @@ quiz.getScoresList = function() {
 
 quiz.clearScoresList = function() {
     localStorage.removeItem(STORAGEKEY);
+    quiz.scores = [];
 }
 
 quiz.buildPage = function() {
