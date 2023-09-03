@@ -16,7 +16,7 @@ quiz object structure, store all the quiz
 */
 
 /* define scores object */
-function Scores(initial, score) {
+function User(initial, score) {
     this.initial = initial;
     this.score = score;
 }
@@ -25,7 +25,7 @@ function Scores(initial, score) {
 const TIMETOTAL = 60; // total time
 const SCORE = 20;  // win score per quiz
 const PUNISH = 10; // punish time seconds if wrong
-const STORAGEKEY = "quizScoresList"; //localstorage key
+const STORAGEKEY = "quizUsersList"; //localstorage key
 
 // all the pages and areas define
 const topArea = document.querySelector('#top'); // viewscore and timer area
@@ -48,7 +48,7 @@ viewHighScoresBtn.addEventListener('click', handleViewHighScores);
 quiz.currentScore = 0; // current quiz user scores
 quiz.idx = 0; // quiz obj arr idx
 quiz.time = TIMETOTAL;
-quiz.scores = []; // Scores(initial, score) object array
+quiz.users = []; // User(initial, score) object array
 quiz.timerId = 0; // setInterval returned id, number, if there is a setInterval, then non-zero number
 
 /* define quiz object functions */
@@ -61,38 +61,38 @@ quiz.reset = function() {
     // do not reset scores list here
 }
 
-// insert newScoresObj into quiz.scores arr to have a descending order of score
-quiz.insertScoresList = function(newScoresObj) {
-    if (quiz.scores.length > 0) {
-        for (let i = 0; i < quiz.scores.length; i++) {
-            if (newScoresObj.score > quiz.scores[i].score) {
-                quiz.scores.splice(i, 0, newScoresObj);
+// insert User Object into quiz.users arr to have a descending order of score
+quiz.insertUsersList = function(newUserObj) {
+    if (quiz.users.length > 0) {
+        for (let i = 0; i < quiz.users.length; i++) {
+            if (newUserObj.score > quiz.users[i].score) {
+                quiz.users.splice(i, 0, newUserObj);
                 return;
             }
         }
     } 
-    quiz.scores.push(newScoresObj);
+    quiz.users.push(newUserObj);
 }
 
 // save new scores object action, insert into scores arr, then save localStorage.
-quiz.setScoresList = function(newScoresObj) {
+quiz.setUsersList = function(newUserObj) {
     // insert data
-    this.insertScoresList(newScoresObj)
+    this.insertUsersList(newUserObj)
     // save to localstorage
-    localStorage.setItem(STORAGEKEY, JSON.stringify(quiz.scores));
+    localStorage.setItem(STORAGEKEY, JSON.stringify(quiz.users));
 }
 
 // from local storage get the scorelist arr
-quiz.getScoresList = function() {
+quiz.getUsersList = function() {
     // return scores object list, if no such key, return null
     const storeList = JSON.parse(localStorage.getItem(STORAGEKEY));
     return ((storeList === null)? [] : storeList)
 }
 
 //clear score list local storage and arr
-quiz.clearScoresList = function() {
+quiz.clearUsersList = function() {
     localStorage.removeItem(STORAGEKEY);
-    quiz.scores = [];
+    quiz.users = [];
 }
 
 // build each quiz page from quiz object arr
@@ -170,7 +170,7 @@ function init() {
     // show first page
     showFirstPage();
     // load data
-    quiz.scores = quiz.getScoresList();
+    quiz.users = quiz.getUsersList();
 }
 
 init();
@@ -266,15 +266,15 @@ function handlesubmitInitials(event) {
     event.preventDefault();
     // submit initials, display scores page
     if (initName.value !== '') {
-        const newScores = new Scores(initName.value, quiz.currentScore);
-        quiz.setScoresList(newScores)
+        const newUser = new User(initName.value, quiz.currentScore);
+        quiz.setUsersList(newUser)
     }
-    showScoresPage();
+    showUsersListPage();
 }
 /* end for all done page */
 
-/* show scores list page */
-function showScoresPage() {
+/* show users list page */
+function showUsersListPage() {
     // show score page ONLY
     scoresPage.style.display = 'block';
     // hide pages
@@ -282,7 +282,7 @@ function showScoresPage() {
     donePage.style.display = "none";
     firstPage.style.display = 'none';
     quizPage.style.display = "none";
-    buildScoresList();
+    buildUsersList();
     // bind handler to go back btn
     const goBackBtn = document.querySelector('#go-back');
     goBackBtn.addEventListener('click', handleGoBack);
@@ -291,16 +291,16 @@ function showScoresPage() {
     clearHighScoreBtn.addEventListener('click', handleClearHighScores);
 }
 
-function buildScoresList() {
+function buildUsersList() {
     // display list on page
     const scoresListEl = document.querySelector('#scores-list');
     scoresListEl.textContent = ''
-    const scoresList = quiz.getScoresList();
-    if (scoresList !== null) {
-        for (let scoreObj of scoresList) {
+    const usersList = quiz.getUsersList();
+    if (usersList.length > 0) {
+        for (let userObj of usersList) {
             const liEl = document.createElement('li');
             liEl.className = "score-list-item";
-            liEl.textContent = `${scoreObj.initial} - ${scoreObj.score}`;
+            liEl.textContent = `${userObj.initial} - ${userObj.score}`;
             scoresListEl.append(liEl);
         }
     } else {
@@ -317,8 +317,8 @@ function handleGoBack() {
 function handleClearHighScores() {
     // clear localstorage records
     if (confirm("Are you sure clear all the records?")) {
-        quiz.clearScoresList();
-        // clear display scores list
+        quiz.clearUsersList();
+        // clear display users list
         const scoresList = document.querySelector("#scores-list");
         scoresList.textContent = 'No record!';
     }
@@ -335,5 +335,5 @@ function handleViewHighScores() {
             return; // answer cancel, do nothing
         }
     }
-    showScoresPage();
+    showUsersListPage();
 }
