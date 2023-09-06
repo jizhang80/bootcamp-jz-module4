@@ -1,0 +1,139 @@
+* {
+    box-sizing: border-box;
+}
+
+/* global variable */
+:root {
+    --main-text-color: black;
+    --btn-text-color: white;
+    --btn-color: #351C75;
+    --btn-hover-color: #BD60E7;
+    --score-list-background-color: #D9D4EA;
+    --bottom-color: #C7C7C7;
+    --main-font-family: "Gill Sans Extrabold", sans-serif;
+}
+
+.global-btn {
+    padding: 5px 10px 5px 10px;
+    margin: 5px;
+    font-size: medium;
+    color: var(--btn-text-color);
+    background-color: var(--btn-color);
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.question-choices {
+    width: 250px;
+    text-align: left;
+}
+
+.normal-btn {
+    width: auto;
+    padding: 2px 5px 2px 5px;
+}
+
+.global-btn:hover {
+    opacity: 0.5;
+}
+
+p, h3 {
+    white-space: pre-wrap;
+}
+
+body {
+    max-width: 1900px;
+    min-width: 350px;
+    /* height: 800px; */
+    font-family: var(--main-font-family);
+}
+
+#mainbox {
+    border: solid 2px black;
+    border-radius: 10px;
+    max-width: 800px;
+    height: 600px;
+    margin: auto;
+    margin-top: 100px;
+}
+
+#top {
+    /* display: flex; */
+    display: none;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px;
+}
+
+
+#viewscore-link {
+    text-decoration: none;
+    color: var(--btn-hover-color);
+}
+
+#time-zone {
+    width: 65px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#center {
+    max-width: 500px;
+    margin:auto;
+    margin-top: 150px;
+}
+
+#first-page {
+    text-align: center;
+    display: none;
+}
+
+#question-page {
+    display: none;
+}
+
+#choices-zone {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+}
+
+#done-page {
+    display: none;
+}
+
+#scores-page {
+    display: none;
+}
+
+#scores-list {
+    overflow-y:scroll;
+    max-height: 200px;
+    background-color: var(--score-list-background-color);
+}
+
+.score-list-item {
+    padding: 5px;
+}
+
+#bottom {
+    display: none;
+    max-width: 500px;
+    margin:auto;
+    margin-top: 40px;
+    border-top: solid var(--bottom-color) 2px;
+}
+
+#result {
+    color: var(--bottom-color);
+    font-style: italic;
+    font-weight: lighter;
+}
+
+@media (max-width: 800px){
+    #mainbox {
+        margin-top: 5px;
+        padding: auto;
+    }
+}

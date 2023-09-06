@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Quizz</title>
+        <link rel="stylesheet" href="./assets/css/style.css" />
+    </head>
+
+    <body>
+        <main id="mainbox">
+            <div id="top">
+                <div id="viewscore-btn"><a id="viewscore-link" href="#">View high scores</a></div>
+                <div id="time-zone">
+                    <span>Time: </span><span id="time"></span>
+                </div>
+            </div>
+            <div id="center">
+                <div id="first-page">
+                    <div id="title"><h2>Coding Quiz Challenge</h2></div>
+                    <div id="content">
+                        <p>Try to answer the following code-related questions within the time limit. Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+                        <button class="global-btn" id="start-quiz-btn">Start Quiz</button>
+                    </div>
+                </div>
+                <div id="quiz-page">
+                    <h3 id="quiz-title"></h3>
+                    <div id="choices-zone">
+                        <!-- <button class="global-btn question-choices">1. commas</button>
+                        <button class="global-btn question-choices">2. commas</button>
+                        <button class="global-btn question-choices">3. commas</button>
+                        <button class="global-btn question-choices">4. commas</button> -->
+                    </div>
+                </div>
+                <div id="done-page">
+                    <h2 id="done-page-title">All done!</h2>
+                    <p>Your final score is <span id="final-score"></span>.</p>
+                    <form>
+                        <label for="init-name">Enter initials: </label>
+                        <input type="text" id="init-name" name="iname">
+                        <button id="submit-score-list" class="global-btn normal-btn">Submit</button>
+                    </form>
+                </div>
+                <div id="scores-page">
+                    <h2>High scores</h2>
+                    <ol id="scores-list">
+                        <!-- <li class="score-list-item"><span id="score-list-init-name"></span> - <span id="score-list-score"></span></li> -->
+                    </ol>
+                    <button id="go-back" class="global-btn normal-btn">Go back</button>
+                    <button id='clear-high' class="global-btn normal-btn">Clear high scores</button>
+                </div>
+            </div>
+            <div id="bottom">
+                <h2 id="result"></h2>
+            </div>
+        </main>
+        <script type="module" src="./assets/js/script.js"></script>
+    </body>
+</html>
